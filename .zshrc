@@ -1,6 +1,10 @@
 ## Env vars
 export EDITOR=vim
 
+# Minikube
+#  deactivate emoji bs
+export MINIKUBE_IN_STYLE=false 
+
 ## Aliases
 alias ls='ls --color'
 alias ll='ls -l'
