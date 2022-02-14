@@ -18,6 +18,8 @@ alias grep='grep --color'
 alias gti='git'
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
+alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
 ## Prompt
 setopt PROMPT_SUBST
 
@@ -82,6 +84,7 @@ compinit
 
 compdef dotfiles=git
 compdef gti=git
+compdef ssh-unsafe=ssh
 
 ## History
 HISTFILE=~/.zsh_history
