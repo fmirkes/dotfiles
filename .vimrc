@@ -9,3 +9,5 @@
 :set autoindent
 :set smartindent
 
+:set mouse-=a
+
