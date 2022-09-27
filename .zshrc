@@ -25,6 +25,10 @@ setopt PROMPT_SUBST
 
 autoload -U colors && colors
 
+readlink_bin='readlink'
+if which greadlink &> /dev/null; then
+  readlink_bin='greadlink'
+fi
 function __git_prompt() {
   local _prompt
   
@@ -48,7 +52,7 @@ function __git_prompt() {
     fi
     
     local _rebase=''
-    if [[ -d "$(readlink -eq $(git rev-parse --git-path rebase-merge))"  ]] || [[ -d "$(readlink -eq $(git rev-parse --git-path rebase-apply))" ]]; then
+    if [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-merge))"  ]] || [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-apply))" ]]; then
       _rebase='true'
     fi
 
