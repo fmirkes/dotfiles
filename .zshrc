@@ -22,6 +22,8 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
+alias tmux='tmux -2'
+
 ## Prompt
 setopt PROMPT_SUBST
 
