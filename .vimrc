@@ -11,3 +11,5 @@
 
 :set mouse-=a
 
+:set ttimeoutlen=50
+
