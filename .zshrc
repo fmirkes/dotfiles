@@ -88,14 +88,22 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
-autoload -Uz compinit
-compinit
-
 compdef dotfiles=git
 compdef gti=git
 compdef ssh-unsafe=ssh
 
-## History
+# add external completions
+[[ -d ~/.zsh/zsh-completions ]] || git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
+fpath=(~/.zsh/zsh-completions/src $fpath)
+
+# add custom completions
+[[ -d ~/.zsh/custom-completions ]] && fpath=(~/.zsh/custom-completions $fpath)
+
+# rebuild completion db (~/.zcompdump)
+autoload -Uz compinit
+compinit
+
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
@@ -108,6 +116,7 @@ setopt share_history
 
 ## External
 
+# zfs-history-substring-search
 [[ -d ~/.zsh/zsh-history-substring-search ]] || git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=cyan,fg=white,bold"
@@ -115,9 +124,8 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=cyan,fg=white,bold"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# zsh-autosuggestions
 [[ -d ~/.zsh/zsh-autosuggestions ]] || git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-[[ -d ~/.zsh/zsh-completions ]] || git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
-fpath=(~/.zsh/zsh-completions/src $fpath)
 
