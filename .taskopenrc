@@ -1,0 +1,4 @@
+[Actions]
+notes.regex = "notes"
+notes.command = "$EDITOR ~/.tasknotes/$UUID.txt"
+
