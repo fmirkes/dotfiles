@@ -88,10 +88,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
-compdef dotfiles=git
-compdef gti=git
-compdef ssh-unsafe=ssh
-
 # add external completions
 [[ -d ~/.zsh/zsh-completions ]] || git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
 fpath=(~/.zsh/zsh-completions/src $fpath)
@@ -102,6 +98,11 @@ fpath=(~/.zsh/zsh-completions/src $fpath)
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
 compinit
+
+# activate completion for aliases
+compdef dotfiles=git
+compdef gti=git
+compdef ssh-unsafe=ssh
 
 # History
 HISTFILE=~/.zsh_history
