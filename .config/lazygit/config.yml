@@ -1,0 +1,14 @@
+showRandomTip: false
+showBottomLine: false
+showCommandLog: false
+disableForcePushing: true
+
+update:
+  method: never
+
+disableStartupPopups: true
+
+notARepository: quit
+
+promptToReturnFromSubprocess: false
+
