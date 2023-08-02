@@ -3,10 +3,6 @@ export EDITOR=vim
 
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 
-# Minikube
-#  deactivate emoji bs
-export MINIKUBE_IN_STYLE=false 
-
 ## Aliases
 alias ls='ls --color'
 alias ll='ls -l'
