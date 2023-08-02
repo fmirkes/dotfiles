@@ -45,7 +45,7 @@ function __git_prompt() {
       local -r _commit_hash="$(git rev-parse --short HEAD 2>/dev/null)"
       local -r _commit_tag="$(git tag --points-at "${_commit_hash}" 2>/dev/null | head -n 1 2>/dev/null)"
       
-    if [[ -n "${_commit_tag}" ]]; then
+      if [[ -n "${_commit_tag}" ]]; then
         _prompt+="${_commit_tag}"
       elif [[ -n "${_commit_hash}" ]]; then
         _prompt+="${_commit_hash}"
@@ -53,9 +53,9 @@ function __git_prompt() {
         _prompt+="${_branch}"
       fi
     else
-     _prompt+="${_branch}"
+      _prompt+="${_branch}"
     fi
-    
+
     local _rebase=''
     if [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-merge))"  ]] || [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-apply))" ]]; then
       _rebase='true'
@@ -64,11 +64,11 @@ function __git_prompt() {
     local -r _status="$(git status -sb --porcelain 2>/dev/null)"
     local -r _ahead="$(grep ahead <<<("${_status}"))"
     local -ri _dirty=$(wc -l <<<("${_status}"))
-    
+  
     if [[ -n "${_rebase}" ]] || [[ -n "${_ahead}" ]] || [[ "${_dirty}" -gt 1 ]]; then
       _prompt+=" "
     fi
-    
+  
     [[ -n "${_rebase}" ]] && _prompt+="%{$fg_bold[yellow]%}%{r%G%}%{$reset_color%}"
     [[ -n "${_ahead}" ]] && _prompt+="%{$fg_bold[yellow]%}%{↑%G%}%{$reset_color%}"
     [[ "${_dirty}" -gt 1 ]] && _prompt+="%{$fg_bold[yellow]%}%{✗%G%}%{$reset_color%}"
