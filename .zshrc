@@ -129,4 +129,8 @@ bindkey '^[[B' history-substring-search-down
 [[ -d ~/.zsh/zsh-autosuggestions ]] || git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# fzf
+export FZF_DEFAULT_OPTS='--no-color'
+which fd &>/dev/null && export FZF_DEFAULT_COMMAND='fd --type f'
 
+[[ -f 'opt/local/share/fzf/shell/completion.zsh' ]] && source '/opt/local/share/fzf/shell/completion.zsh'
