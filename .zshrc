@@ -131,8 +131,13 @@ which fd &>/dev/null && export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-pref
 
 [[ -f 'opt/local/share/fzf/shell/completion.zsh' ]] && source '/opt/local/share/fzf/shell/completion.zsh'
 
-## display current tasks
-if which task &> /dev/null; then
-  task next
+## display info on login
+if [[ -o login ]]; then
+  if [[ "${TERM_PROGRAM}" != 'vscode' ]]; then
+    # display current tasks
+    if which task &> /dev/null; then
+      task next
+    fi
+  fi
 fi
 
