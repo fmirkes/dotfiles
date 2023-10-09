@@ -100,7 +100,7 @@ compdef dotfiles=git
 compdef gti=git
 compdef ssh-unsafe=ssh
 
-# History
+## History
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
