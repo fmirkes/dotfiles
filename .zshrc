@@ -18,6 +18,9 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
+which greadlink &> /dev/null && alias readlink='greadlink'
+which gshred &> /dev/null && alias shred='gshred'
+
 # https://stackoverflow.com/a/18247437
 alias tmux='EDITOR= tmux -2'
 
@@ -26,10 +29,6 @@ setopt PROMPT_SUBST
 
 autoload -U colors && colors
 
-readlink_bin='readlink'
-if which greadlink &> /dev/null; then
-  readlink_bin='greadlink'
-fi
 function __git_prompt() {
   local _prompt
   
@@ -53,7 +52,7 @@ function __git_prompt() {
     fi
 
     local _rebase=''
-    if [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-merge))"  ]] || [[ -d "$($readlink_bin -eq $(git rev-parse --git-path rebase-apply))" ]]; then
+    if [[ -d "$(readlink -eq $(git rev-parse --git-path rebase-merge))"  ]] || [[ -d "$(readlink -eq $(git rev-parse --git-path rebase-apply))" ]]; then
       _rebase='true'
     fi
 
