@@ -1,5 +1,9 @@
 ## Env vars
-export EDITOR=vim
+export EDITOR='vim'
+
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US'
+export LC_ALL='de_DE.UTF-8'
 
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 
