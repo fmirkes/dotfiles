@@ -9,7 +9,7 @@
 :set autoindent
 :set smartindent
 
-:set mouse-=a
+:set mouse=r
 
 :set ttimeoutlen=50
 
