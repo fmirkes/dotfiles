@@ -9,6 +9,9 @@
 :set autoindent
 :set smartindent
 
+:set ignorecase
+:set smartcase
+
 :set mouse=r
 
 :set ttimeoutlen=50
