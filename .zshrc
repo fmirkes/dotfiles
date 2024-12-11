@@ -4,12 +4,6 @@ export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US'
 
-export LC_MONETARY='de_DE.UTF-8'
-export LC_MEASUREMENT='de_DE.UTF-8'
-export LC_NUMERIC='de_DE.UTF-8'
-export LC_PAPER='de_DE.UTF-8'
-export LC_TIME='en_EN.UTF-8'
-
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 
 ## Aliases
