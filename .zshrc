@@ -3,6 +3,7 @@ export EDITOR='vim'
 
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US'
+export LC_TIME='en_UK.UTF-8'
 
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 
