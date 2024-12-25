@@ -1,10 +1,6 @@
 ## Env vars
 export EDITOR='vim'
 
-export LANG='en_US.UTF-8'
-export LANGUAGE='en_US'
-export LC_TIME='en_GB.UTF-8'
-
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 
 ## Aliases
@@ -21,6 +17,8 @@ alias gti='git'
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+alias mosh='LC_ALL=en_US.UTF-8 mosh'
 
 which greadlink &> /dev/null && alias readlink='greadlink'
 which gshred &> /dev/null && alias shred='gshred'
