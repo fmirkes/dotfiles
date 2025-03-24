@@ -114,14 +114,6 @@ setopt share_history
 
 ## External
 
-# zfs-history-substring-search
-[[ -d ~/.zsh/zsh-history-substring-search ]] || git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=cyan,fg=white,bold"
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # zsh-autosuggestions
 [[ -d ~/.zsh/zsh-autosuggestions ]] || git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
