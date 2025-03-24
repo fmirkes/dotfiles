@@ -6,10 +6,6 @@ export EDITOR='vim'
 ## Aliases
 alias ls='ls --color'
 alias ll='ls -l'
-alias llh='ll -h'
-alias lla='ll -a'
-alias llha='llh -a'
-alias llah='lla -h'
 
 alias grep='grep --color'
 
