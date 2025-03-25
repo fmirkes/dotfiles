@@ -82,8 +82,8 @@ zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
 # add external completions
-[[ -d ~/.zsh/zsh-completions ]] || git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
-fpath=(~/.zsh/zsh-completions/src $fpath)
+[[ -d '/opt/local/share/zsh/site-functions' ]] && fpath=('/opt/local/share/zsh/site-functions' $fpath) 
+[[ -d '/opt/local/share/zsh/vendor-completions' ]] && fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
 
 # add custom completions
 [[ -d ~/.zsh/custom-completions ]] && fpath=(~/.zsh/custom-completions $fpath)
