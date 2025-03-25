@@ -123,7 +123,7 @@ which fd &>/dev/null && export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-pref
 
 ## display info on login
 if [[ -o login ]]; then
-  if [[ "${TERM_PROGRAM}" != 'vscode' ]]; then
+  if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
     # display current tasks
     if which task &> /dev/null; then
       task next
