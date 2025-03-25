@@ -111,8 +111,7 @@ setopt share_history
 ## External
 
 # zsh-autosuggestions
-[[ -d ~/.zsh/zsh-autosuggestions ]] || git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' ]] && source '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 # fzf
 export FZF_DEFAULT_OPTS='--no-color --style=minimal'
