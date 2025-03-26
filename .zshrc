@@ -5,6 +5,8 @@ export EDITOR='vim'
 alias ls='ls --color'
 alias ll='ls -l'
 
+alias eza='eza --color=never --long --git --git-repos'
+
 alias grep='grep --color'
 
 alias gti='git'
