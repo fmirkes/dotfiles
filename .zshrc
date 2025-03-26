@@ -118,7 +118,7 @@ source '/opt/local/share/fzf/shell/key-bindings.zsh'
 ## display info on login
 if [[ -o login ]]; then
   if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
-    task next 
+    task next 2>/dev/null || true 
   fi
 fi
 
