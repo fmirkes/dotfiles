@@ -1,7 +1,6 @@
 ## Env vars
 export EDITOR='vim'
-
-[[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
+export PATH="${HOME}/bin:${PATH}"
 
 ## Aliases
 alias ls='ls --color'
@@ -16,8 +15,8 @@ alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=n
 
 alias mosh='LC_ALL=en_US.UTF-8 mosh'
 
-which greadlink &> /dev/null && alias readlink='greadlink'
-which gshred &> /dev/null && alias shred='gshred'
+alias readlink='greadlink'
+alias shred='gshred'
 
 # https://stackoverflow.com/a/18247437
 alias tmux='EDITOR= tmux -2'
@@ -82,11 +81,11 @@ zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
 # add external completions
-[[ -d '/opt/local/share/zsh/site-functions' ]] && fpath=('/opt/local/share/zsh/site-functions' $fpath) 
-[[ -d '/opt/local/share/zsh/vendor-completions' ]] && fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
+fpath=('/opt/local/share/zsh/site-functions' $fpath) 
+fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
 
 # add custom completions
-[[ -d ~/.zsh/custom-completions ]] && fpath=(~/.zsh/custom-completions $fpath)
+fpath=('~/.zsh/custom-completions' $fpath)
 
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
@@ -111,22 +110,19 @@ setopt share_history
 ## External
 
 # zsh-autosuggestions
-[[ -f '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' ]] && source '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+source '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 # fzf
 export FZF_DEFAULT_OPTS='--no-color --style=minimal'
-which fd &>/dev/null && export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 
-[[ -f '/opt/local/share/fzf/shell/completion.zsh' ]] && source '/opt/local/share/fzf/shell/completion.zsh'
-[[ -f '/opt/local/share/fzf/shell/key-bindings.zsh' ]] && source '/opt/local/share/fzf/shell/key-bindings.zsh'
+source '/opt/local/share/fzf/shell/completion.zsh'
+source '/opt/local/share/fzf/shell/key-bindings.zsh'
 
 ## display info on login
 if [[ -o login ]]; then
   if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
-    # display current tasks
-    if which task &> /dev/null; then
-      task next
-    fi
+    task next 
   fi
 fi
 
