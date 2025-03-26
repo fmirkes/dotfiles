@@ -1,6 +1,5 @@
 ## Env vars
 export EDITOR='vim'
-export PATH="${HOME}/bin:${PATH}"
 
 ## Aliases
 alias ls='ls --color'
@@ -83,9 +82,6 @@ zstyle ':completion::complete:*' gain-privileges 1
 # add external completions
 fpath=('/opt/local/share/zsh/site-functions' $fpath) 
 fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
-
-# add custom completions
-fpath=('~/.zsh/custom-completions' $fpath)
 
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
