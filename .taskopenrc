@@ -1,4 +1,9 @@
 [Actions]
-notes.regex = "notes"
+notes.regex = "^[Nn]otes(.*)"
 notes.command = "$EDITOR ~/.tasknotes/$UUID.txt"
+
+files.command = "open $FILE"
+
+url.regex = "((?:www|http|https).*)"
+url.command = "open $LAST_MATCH"
 
