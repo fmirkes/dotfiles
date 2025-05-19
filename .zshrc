@@ -85,6 +85,9 @@ zstyle ':completion::complete:*' gain-privileges 1
 fpath=('/opt/local/share/zsh/site-functions' $fpath) 
 fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
 compinit
