@@ -85,10 +85,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
-# add external completions
-fpath=('/opt/local/share/zsh/site-functions' $fpath) 
-fpath=('/opt/local/share/zsh/vendor-completions' $fpath) 
-
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -115,14 +111,14 @@ setopt share_history
 ## External
 
 # zsh-autosuggestions
-source '/opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf
 export FZF_DEFAULT_OPTS='--no-color --style=minimal'
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 
-source '/opt/local/share/fzf/shell/completion.zsh'
-source '/opt/local/share/fzf/shell/key-bindings.zsh'
+source '/opt/homebrew/opt/fzf/shell/completion.zsh'
+source '/opt/homebrew/opt/fzf/shell/key-bindings.zsh'
 
 ## display info on login
 if [[ -o login ]]; then
