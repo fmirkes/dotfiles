@@ -87,6 +87,7 @@ zstyle ':completion::complete:*' gain-privileges 1
 
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
