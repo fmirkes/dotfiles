@@ -114,6 +114,9 @@ setopt share_history
 # zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# zsh-autopair
+source /opt/homebrew/share/zsh-autopair/autopair.zsh
+
 # fzf
 export FZF_DEFAULT_OPTS='--no-color --style=minimal'
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
