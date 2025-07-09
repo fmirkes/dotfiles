@@ -109,6 +109,9 @@ setopt hist_ignore_space
 setopt inc_append_history 
 setopt share_history
 
+## Other
+setopt correct
+
 ## External
 
 # zsh-autosuggestions
