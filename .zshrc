@@ -26,6 +26,8 @@ alias shred='gshred'
 # https://stackoverflow.com/a/18247437
 alias tmux='EDITOR= tmux -2'
 
+alias vi='vim'
+
 ## Prompt
 setopt PROMPT_SUBST
 
