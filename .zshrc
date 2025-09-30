@@ -1,9 +1,19 @@
 ## Env vars
-export EDITOR='vim'
 
-export HOMEBREW_NO_EMOJI=1
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_ENV_HINTS=1
+# OS detection
+[[ "$(uname)" == 'Darwin' ]] && _IS_MACOS='true'
+[[ -f '/etc/arch-release' ]] &&  _IS_ARCHLINUX='true'
+
+# VARS
+export EDITOR='vim'
+export VISUAL='vim'
+
+# homebrew
+if [[ -v '_IS_MACOS' ]]; then
+  export HOMEBREW_NO_EMOJI=1
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_ENV_HINTS=1
+fi
 
 ## Aliases
 alias ls='ls --color'
@@ -20,13 +30,16 @@ alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=n
 
 alias mosh='LC_ALL=en_US.UTF-8 mosh'
 
-alias readlink='greadlink'
-alias shred='gshred'
-
 # https://stackoverflow.com/a/18247437
 alias tmux='EDITOR= tmux -2'
 
 alias vi='vim'
+
+# macos specific aliases
+if [[ -v '_IS_MACOS' ]]; then
+  alias readlink='greadlink'
+  alias shred='gshred'
+fi
 
 ## Prompt
 setopt PROMPT_SUBST
@@ -88,8 +101,10 @@ zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' gain-privileges 1
 
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+if [[ -v '_IS_MACOS' ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
 
 # rebuild completion db (~/.zcompdump)
 autoload -Uz compinit
@@ -117,22 +132,36 @@ setopt correct
 ## External
 
 # zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -v '_IS_MACOS' ]] && source '/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+[[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 # zsh-autopair
-source /opt/homebrew/share/zsh-autopair/autopair.zsh
+[[ -v '_IS_MACOS' ]] && source '/opt/homebrew/share/zsh-autopair/autopair.zsh'
+[[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/zsh/plugins/zsh-autopair/autopair.zsh'
 
 # fzf
 export FZF_DEFAULT_OPTS='--no-color --style=minimal'
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 
-source '/opt/homebrew/opt/fzf/shell/completion.zsh'
-source '/opt/homebrew/opt/fzf/shell/key-bindings.zsh'
+[[ -v '_IS_MACOS' ]] && source '/opt/homebrew/opt/fzf/shell/completion.zsh'
+[[ -v '_IS_MACOS' ]] && source '/opt/homebrew/opt/fzf/shell/key-bindings.zsh'
+
+[[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/fzf/completion.zsh'
+[[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/fzf/key-bindings.zsh'
 
 ## display info on login
 if [[ -o login ]]; then
   if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
     task next 2>/dev/null || true 
   fi
+fi
+
+# fix keybindings
+if [[ -n '_IS_ARCHLINUX' ]]; then
+  bindkey -e
+
+  bindkey "^[[H"  beginning-of-line
+  bindkey "^[[F"  end-of-line
+  bindkey "^[[3~" delete-char
 fi
 
