@@ -46,6 +46,16 @@ setopt PROMPT_SUBST
 
 autoload -U colors && colors
 
+function __hostname_prompt() {
+  local _prompt
+
+  if [[ -n "${SSH_CLIENT}" || -n "${SSH_CONNECTION}" ]]; then
+    _prompt="[%{$fg_bold[red]%}%M%{$reset_color%}]"
+  fi
+
+  echo -n "${_prompt}"
+}
+
 function __git_prompt() {
   local _prompt
   
@@ -91,7 +101,7 @@ function __git_prompt() {
   echo -n "${_prompt}"
 }
 
-export PROMPT='[%(?.0.%{$fg_bold[red]%}!%{$reset_color%})]%(!.[%{$fg_bold[red]%}root%{$reset_color%}].)[%(!.%{$fg_bold[red]%}.%{$fg[cyan]%})%~%{$reset_color%}]$(__git_prompt)%(!.%{$fg_bold[red]%}#.$)%{$reset_color%} '
+export PROMPT='[%(?.0.%{$fg_bold[red]%}!%{$reset_color%})]%(!.[%{$fg_bold[red]%}root%{$reset_color%}].)$(__hostname_prompt)[%(!.%{$fg_bold[red]%}.%{$fg[cyan]%})%~%{$reset_color%}]$(__git_prompt)%(!.%{$fg_bold[red]%}#.$)%{$reset_color%} '
 
 ## Completion
 setopt COMPLETE_ALIASES
