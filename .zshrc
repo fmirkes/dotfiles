@@ -167,7 +167,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 [[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/fzf/key-bindings.zsh'
 
 ## display info on login
-if [[ -o login ]]; then
+if [[ -o 'login' ]] || [[ -v 'DESKTOP_SESSION' ]]; then
   if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
     task next 2>/dev/null || true 
   fi
