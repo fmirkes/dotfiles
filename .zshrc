@@ -1,10 +1,17 @@
-## Env vars
-
-# OS detection
+## OS detection
 [[ "$(uname)" == 'Darwin' ]] && _IS_MACOS='true'
 [[ -f '/etc/arch-release' ]] &&  _IS_ARCHLINUX='true'
 
-# VARS
+## Fix keybindings
+if [[ -n '_IS_ARCHLINUX' ]]; then
+  bindkey -e
+
+  bindkey "^[[H"  beginning-of-line
+  bindkey "^[[F"  end-of-line
+  bindkey "^[[3~" delete-char
+fi
+
+## Env Vars
 export EDITOR='vim'
 export VISUAL='vim'
 
@@ -166,12 +173,4 @@ if [[ -o login ]]; then
   fi
 fi
 
-# fix keybindings
-if [[ -n '_IS_ARCHLINUX' ]]; then
-  bindkey -e
-
-  bindkey "^[[H"  beginning-of-line
-  bindkey "^[[F"  end-of-line
-  bindkey "^[[3~" delete-char
-fi
 
