@@ -47,6 +47,19 @@ if [[ -v '_IS_MACOS' ]]; then
   alias shred='gshred'
 fi
 
+## Functions
+function notes() {
+  local _note
+  _note=$(
+    fd -e 'md' -e 'txt' . \
+     | fzf --ansi --preview 'mdcat {}' --preview-window='right:70%'
+   )
+
+  [[ -n "${_note}" ]] && $EDITOR "${_note}"
+
+}
+
+
 ## Prompt
 setopt PROMPT_SUBST
 
@@ -156,7 +169,9 @@ setopt correct
 [[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/zsh/plugins/zsh-autopair/autopair.zsh'
 
 # fzf
-export FZF_DEFAULT_OPTS='--no-color --style=minimal'
+export FZF_DEFAULT_OPTS="--no-color --style=minimal \
+  --bind 'ctrl-d:preview-page-down,ctrl-u:preview-page-up' \
+  --bind 'ctrl-f:preview-page-down,ctrl-b:preview-page-up'"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 
 [[ -v '_IS_MACOS' ]] && source '/opt/homebrew/opt/fzf/shell/completion.zsh'
