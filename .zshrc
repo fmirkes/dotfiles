@@ -35,8 +35,6 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias ssh-unsafe='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
-alias mosh='LC_ALL=en_US.UTF-8 mosh'
-
 # https://stackoverflow.com/a/18247437
 alias tmux='EDITOR= tmux -2'
 
@@ -44,6 +42,7 @@ alias vi='vim'
 
 # macos specific aliases
 if [[ -v '_IS_MACOS' ]]; then
+  alias mosh='LC_ALL=en_US.UTF-8 mosh'
   alias readlink='greadlink'
   alias shred='gshred'
 fi
