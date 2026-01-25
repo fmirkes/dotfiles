@@ -52,7 +52,7 @@ function notes() {
   local _note
   _note=$(
     fd -e 'md' -e 'txt' . \
-     | fzf --ansi --preview 'mdcat {}' --preview-window='right:70%'
+     | fzf --preview 'mdcat --local {}' --preview-window='right:70%'
    )
 
   [[ -n "${_note}" ]] && $EDITOR "${_note}"
