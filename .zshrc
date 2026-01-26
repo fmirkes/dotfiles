@@ -52,13 +52,23 @@ function notes() {
   local _note
   _note=$(
     fd -e 'md' -e 'txt' . \
-     | fzf --preview 'mdcat --local {}' --preview-window='right:70%'
-   )
+     | fzf --color --preview 'mdcat --local {}' --preview-window='right:70%'
+  )
 
   [[ -n "${_note}" ]] && $EDITOR "${_note}"
-
 }
 
+function ansible-fzf() {
+  [[ ! -e "./ansible.cfg" ]] && return 1
+
+  local _playbook
+  _playbook=$(
+    fd -e 'yml' . playbooks \
+     | fzf --color --preview 'bat -f {}' --preview-window='right:60%'
+  )
+
+  [[ -n "${_playbook}" ]] && ansible-playbook "${_playbook}" ${*}
+}
 
 ## Prompt
 setopt PROMPT_SUBST
