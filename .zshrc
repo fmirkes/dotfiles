@@ -190,8 +190,13 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 [[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/fzf/completion.zsh'
 [[ -v '_IS_ARCHLINUX' ]] && source '/usr/share/fzf/key-bindings.zsh'
 
-## display info on login
+## do stuff in login shells 
 if [[ -o 'login' ]] || [[ -v 'DESKTOP_SESSION' ]]; then
+  if [[ -v '_IS_ARCHLINUX' ]] && [[ ! -v 'SSH_AUTH_SOCK' ]]; then
+    eval $(ssh-agent -s) > /dev/null
+    ssh-add > /dev/null 2>&1
+  fi
+
   if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
     task next 2>/dev/null || true 
   fi
