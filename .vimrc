@@ -12,7 +12,7 @@
 :set ignorecase
 :set smartcase
 
-:set mouse=r
+:set mouse=
 
 :set ttimeoutlen=50
 
