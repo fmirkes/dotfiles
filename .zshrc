@@ -3,12 +3,17 @@
 [[ -f '/etc/arch-release' ]] &&  _IS_ARCHLINUX='true'
 
 ## Fix keybindings
-if [[ -n '_IS_ARCHLINUX' ]]; then
-  bindkey -e
+bindkey -e
 
+if [[ -v '_IS_ARCHLINUX' ]]; then
   bindkey "^[[H"  beginning-of-line
   bindkey "^[[F"  end-of-line
   bindkey "^[[3~" delete-char
+fi
+
+if [[ -v '_IS_MACOS' ]]; then
+  bindkey "\e[H" beginning-of-line
+  bindkey "\e[F" end-of-line
 fi
 
 ## Env Vars
