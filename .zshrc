@@ -201,10 +201,5 @@ if [[ -o 'login' ]] || [[ -v 'DESKTOP_SESSION' ]]; then
     eval $(ssh-agent -s) > /dev/null
     ssh-add > /dev/null 2>&1
   fi
-
-  if [[ "${TERM_PROGRAM}" != 'vscode' ]] && [[ "${TERM_PROGRAM}" != 'zed' ]]; then
-    task next 2>/dev/null || true 
-  fi
 fi
-
 
